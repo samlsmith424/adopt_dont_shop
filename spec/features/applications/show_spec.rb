@@ -69,7 +69,7 @@ RSpec.describe 'application show page' do
 
       expect(current_path).to eq("/applications/#{@application_1.id}")
     end
-save_and_open_page
+
     within('#app-attributes') do
       expect(page).to have_content("Pork Chop")
     end
@@ -100,7 +100,6 @@ save_and_open_page
 
       expect(current_path).to eq("/applications/#{@application_1.id}")
       expect(page).to_not have_content("Submit Application")
-      # expect(page).to_not have_content()
     end
   end
 
@@ -111,7 +110,7 @@ save_and_open_page
 
       fill_in :search, with: "Por"
       click_button('Search')
-      save_and_open_page
+    
       expect(current_path).to eq("/applications/#{@application_1.id}")
     end
 
@@ -119,44 +118,4 @@ save_and_open_page
       expect(page).to have_content("Pork Chop")
     end
   end
-
-  # describe 'submitting an application' do
-  #   context 'without pets on the application' do
-  #     it 'does not allow submission' do
-  #       visit "/applications/#{@application_1.id}"
-  #       expect(page).to_not have_content('#application-submission')
-  #     end
-  #   end
-  #
-  #   context 'with pets on the application' do
-  #     before(:each) do
-  #       PetApplication.new(pet_id: @pet_1.id, application_id: @application_1.id).save
-  #       visit "/applications/#{@application_1.id}"
-  #     end
-  #
-  #     it 'has submission form with reason field' do
-  #       within('#pet-results') do
-  #         fill_in :search, with: "Pork Chop"
-  #         click_button('Search')
-  #         expect(current_path).to eq("/applications/#{@application_1.id}")
-  #       end
-  #
-  #       within('#application-submission') do
-  #         expect(page).to have_field("reason")
-  #         expect(page).to have_button("Submit")
-  #       end
-  #     end
-  #
-  #       within('#pet-results') do
-  #         click_button "Adopt this Pet"
-  #
-  #         expect(current_path).to eq("/applications/#{@application_1.id}")
-  #       end
-  #     it 'allows you to submit an application' do
-  #
-  #     end
-  #   end
-  #
-  #
-  # end
 end
